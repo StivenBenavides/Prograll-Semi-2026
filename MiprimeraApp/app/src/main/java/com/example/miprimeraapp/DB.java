@@ -21,14 +21,34 @@ public class DB extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
        //actualizar la base de datos
     }
-    public String eeadministrar_amigos(String accion, String [] datos ){
+    public String administrar_amigos(String accion, String [] datos ){
         try{
             SQLiteDatabase db=getWritableDatabase();
             String mensaje="ok" , sql = "";
             switch (accion){
-                case "nuevo";
-                sql="";
+                case "nuevo":
+                sql="INSERT INTO amigos(nombre,direccion,telefono,email,dui,urlFoto) VALUES(" +
+                        "'"+ datos[1]+"',"+
+                        "'"+ datos[2]+"',"+
+                        "'"+ datos[3]+"',"+
+                        "'"+ datos[4]+"',"+
+                        "'"+ datos[5]+"',"+
+                        "'"+ datos[6]+"'"+
+                        ")";
                 break;
+                case "modificar":
+                    sql="UPDATE amigos SET " +
+                            "nombre='"+datos[1]+"',"+
+                            "direccion='"+datos[2]+"',"+
+                            "telefono='"+datos[3]+"',"+
+                            "email='"+datos[4]+"',"+
+                            "dui='"+datos[5]+"',"+
+                            "urlFoto='"+datos[6]+"',"+
+                            "WHERE idAmigos='"+datos[0]+"',";
+                    break;
+                case "eliminar":
+                    sql="";
+                    break;
             }
         } catch (RuntimeException e) {
             return e.getMessage();
