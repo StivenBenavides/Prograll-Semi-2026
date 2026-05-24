@@ -140,7 +140,7 @@ public class MainActivity extends Activity {
 
         String[] datos = {idAmigo, nombre, direccion, tel, email, dui, urlFoto};
         db.administrar_amigos(accion, datos);
-        mostrarMsg("Registro de amigo guardado con exito.");
+        mostrarMsg("Registro de amigo guardado con exito :D.");
 
         regresarListaAmigos();
     }
